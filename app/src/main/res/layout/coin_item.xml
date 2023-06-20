@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="cryptoCurrency"
+            type="com.omprakash.cryptocurrency.model.CryptoCurrency" />
+        <variable
+            name="isActive"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/rank_number_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(cryptoCurrency.rank) + `. `}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="TextView" />
+
+        <TextView
+            android:id="@+id/name_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{cryptoCurrency.name}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toEndOf="@+id/rank_number_txt"
+            app:layout_constraintTop_toTopOf="@+id/rank_number_txt"
+            tools:text="TextView" />
+
+        <TextView
+            android:id="@+id/is_active_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{isActive ? `active` : `deactive`}"
+            android:textColor="@color/green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="active" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="344dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
