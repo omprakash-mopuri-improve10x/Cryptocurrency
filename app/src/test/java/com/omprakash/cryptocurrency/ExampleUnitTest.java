@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import com.google.gson.Gson;
-import com.omprakash.cryptocurrency.model.CryptoCurrency;
+import com.omprakash.cryptocurrency.model.Coin;
 import com.omprakash.cryptocurrency.network.CoinApi;
 import com.omprakash.cryptocurrency.network.CoinApiService;
 
@@ -28,8 +28,8 @@ public class ExampleUnitTest {
     @Test
     public void getCryptoCurrencies() throws IOException {
         CoinApiService coinApiService = new CoinApi().createCoinApiService();
-        Call<List<CryptoCurrency>> call = coinApiService.fetchCryptocurrencies();
-        List<CryptoCurrency> cryptoCurrencies = call.execute().body();
+        Call<List<Coin>> call = coinApiService.fetchCryptocurrencies();
+        List<Coin> cryptoCurrencies = call.execute().body();
         assertNotNull(cryptoCurrencies);
         assertFalse(cryptoCurrencies.isEmpty());
         System.out.println(new Gson().toJson(cryptoCurrencies));

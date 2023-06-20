@@ -7,16 +7,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.omprakash.cryptocurrency.databinding.CoinItemBinding;
-import com.omprakash.cryptocurrency.model.CryptoCurrency;
+import com.omprakash.cryptocurrency.model.Coin;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CoinsAdapter extends RecyclerView.Adapter<CoinViewHolder> {
 
-    private List<CryptoCurrency> cryptoCurrencies;
+    private List<Coin> cryptoCurrencies;
 
-    void setCryptoCurrencies(List<CryptoCurrency> cryptoCurrencies) {
+    void setCryptoCurrencies(List<Coin> cryptoCurrencies) {
         this.cryptoCurrencies = cryptoCurrencies;
         notifyDataSetChanged();
     }
@@ -31,9 +30,8 @@ public class CoinsAdapter extends RecyclerView.Adapter<CoinViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CoinViewHolder holder, int position) {
-        CryptoCurrency cryptoCurrency = cryptoCurrencies.get(position);
-        holder.binding.setCryptoCurrency(cryptoCurrency);
-        holder.binding.setIsActive(cryptoCurrency.getActive());
+        Coin coin = cryptoCurrencies.get(position);
+        holder.binding.setCoin(coin);
     }
 
     @Override

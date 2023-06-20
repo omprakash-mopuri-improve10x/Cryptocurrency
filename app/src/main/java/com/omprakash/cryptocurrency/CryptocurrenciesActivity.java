@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.omprakash.cryptocurrency.databinding.ActivityCryptocurrenciesBinding;
-import com.omprakash.cryptocurrency.model.CryptoCurrency;
+import com.omprakash.cryptocurrency.model.Coin;
 import com.omprakash.cryptocurrency.network.CoinApi;
 import com.omprakash.cryptocurrency.network.CoinApiService;
 
@@ -20,7 +20,7 @@ import retrofit2.Response;
 
 public class CryptocurrenciesActivity extends AppCompatActivity {
 
-    private ArrayList<CryptoCurrency> cryptoCurrencies = new ArrayList<>();
+    private ArrayList<Coin> cryptoCurrencies = new ArrayList<>();
     private CoinsAdapter coinsAdapter;
     private ActivityCryptocurrenciesBinding binding;
 
@@ -37,18 +37,18 @@ public class CryptocurrenciesActivity extends AppCompatActivity {
 
     private void getCryptoCurrencies() {
         CoinApiService coinApiService = new CoinApi().createCoinApiService();
-        Call<List<CryptoCurrency>> call = coinApiService.fetchCryptocurrencies();
-        call.enqueue(new Callback<List<CryptoCurrency>>() {
+        Call<List<Coin>> call = coinApiService.fetchCryptocurrencies();
+        call.enqueue(new Callback<List<Coin>>() {
             @Override
-            public void onResponse(Call<List<CryptoCurrency>> call, Response<List<CryptoCurrency>> response) {
+            public void onResponse(Call<List<Coin>> call, Response<List<Coin>> response) {
                 if (response.isSuccessful()) {
-                    List<CryptoCurrency> cryptoCurrencies = response.body();
+                    List<Coin> cryptoCurrencies = response.body();
                     coinsAdapter.setCryptoCurrencies(cryptoCurrencies);
                 }
             }
 
             @Override
-            public void onFailure(Call<List<CryptoCurrency>> call, Throwable t) {
+            public void onFailure(Call<List<Coin>> call, Throwable t) {
                 Toast.makeText(CryptocurrenciesActivity.this, "Failed to load data", Toast.LENGTH_SHORT).show();
             }
         });

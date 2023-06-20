@@ -2,7 +2,7 @@ package com.omprakash.cryptocurrency.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class CryptoCurrency {
+public class Coin {
     private String id;
     private String name;
     private String symbol;
