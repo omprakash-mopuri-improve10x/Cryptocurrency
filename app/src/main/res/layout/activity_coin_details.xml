@@ -15,10 +15,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toStartOf="@+id/is_active_txt"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -44,13 +43,6 @@
                 app:layout_constraintTop_toTopOf="@+id/rank_number_txt"
                 tools:text="TextView" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="344dp" />
-
             <TextView
                 android:id="@+id/coin_symbol_txt"
                 android:layout_width="0dp"
@@ -58,33 +50,32 @@
                 android:text="@{` (` + coinDetails.symbol + `)`}"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toEndOf="@+id/name_txt"
                 app:layout_constraintTop_toTopOf="@+id/name_txt"
                 tools:text="TextView" />
+
+            <TextView
+                android:id="@+id/is_active_txt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{coinDetails.active ? `active` : `deactive`}"
+                android:textColor="@color/green"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="active" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/coin_description_txt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="TextView"
+            android:layout_marginTop="8dp"
+            android:text="@{coinDetails.description}"
+            tools:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
-        <TextView
-            android:id="@+id/is_active_txt"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@{coinDetails.active ? `active` : `deactive`}"
-            android:textColor="@color/green"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/constraintLayout"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="active" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
