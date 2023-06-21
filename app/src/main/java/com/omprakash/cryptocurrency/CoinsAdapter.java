@@ -13,12 +13,18 @@ import java.util.List;
 
 public class CoinsAdapter extends RecyclerView.Adapter<CoinViewHolder> {
 
-    private List<Coin> cryptoCurrencies;
+    private List<Coin> coins;
+    private OnItemActionListener onItemActionListener;
 
-    void setCryptoCurrencies(List<Coin> cryptoCurrencies) {
-        this.cryptoCurrencies = cryptoCurrencies;
+    void setCoins(List<Coin> coins) {
+        this.coins = coins;
         notifyDataSetChanged();
     }
+
+    void setOnItemActionListener(OnItemActionListener onItemActionListener) {
+        this.onItemActionListener = onItemActionListener;
+    }
+
 
     @NonNull
     @Override
@@ -30,12 +36,15 @@ public class CoinsAdapter extends RecyclerView.Adapter<CoinViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CoinViewHolder holder, int position) {
-        Coin coin = cryptoCurrencies.get(position);
+        Coin coin = coins.get(position);
         holder.binding.setCoin(coin);
+        holder.binding.getRoot().setOnClickListener(v -> {
+            onItemActionListener.onItemClicked(coin.getId());
+        });
     }
 
     @Override
     public int getItemCount() {
-        return cryptoCurrencies.size();
+        return coins.size();
     }
 }
