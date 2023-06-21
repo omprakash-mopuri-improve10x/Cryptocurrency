@@ -2,6 +2,7 @@ package com.omprakash.cryptocurrency;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.widget.Toast;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 import com.omprakash.cryptocurrency.databinding.ActivityCoinDetailsBinding;
 import com.omprakash.cryptocurrency.model.CoinDetails;
 import com.omprakash.cryptocurrency.model.Tag;
+import com.omprakash.cryptocurrency.model.Team;
 import com.omprakash.cryptocurrency.network.CoinApi;
 import com.omprakash.cryptocurrency.network.CoinApiService;
 
@@ -24,6 +26,9 @@ public class CoinDetailsActivity extends AppCompatActivity {
     private String coinId;
     private TagsAdapter tagsAdapter;
     private ArrayList<Tag> tags = new ArrayList<>();
+    private TeamMembersAdapter teamMembersAdapter;
+    private ArrayList<Team> teams = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,8 @@ public class CoinDetailsActivity extends AppCompatActivity {
         getCoinDetails();
         setupTagsAdapter();
         setupTagsRv();
+        setupTeamsAdapter();
+        setupTeamMembersRv();
     }
 
     private void getCoinDetails() {
@@ -48,6 +55,7 @@ public class CoinDetailsActivity extends AppCompatActivity {
                     CoinDetails coinDetails = response.body();
                     binding.setCoinDetails(coinDetails);
                     tagsAdapter.setTags(coinDetails.getTags());
+                    teamMembersAdapter.setTeams(coinDetails.getTeams());
                 }
             }
 
@@ -66,5 +74,15 @@ public class CoinDetailsActivity extends AppCompatActivity {
     private void setupTagsRv() {
         binding.tagsRv.setLayoutManager(new GridLayoutManager(this, 3));
         binding.tagsRv.setAdapter(tagsAdapter);
+    }
+
+    private void setupTeamsAdapter() {
+        teamMembersAdapter = new TeamMembersAdapter();
+        teamMembersAdapter.setTeams(teams);
+    }
+
+    private void setupTeamMembersRv() {
+        binding.teamMembersRv.setLayoutManager(new LinearLayoutManager(this));
+        binding.teamMembersRv.setAdapter(teamMembersAdapter);
     }
 }
