@@ -12,8 +12,8 @@ import retrofit2.http.Path;
 public interface CoinApiService {
 
     @GET("coins")
-    Call<List<Coin>> fetchCryptocurrencies();
+    Call<List<Coin>> fetchCoins();
 
-    @GET("coins/@{id}")
+    @GET("coins/{id}")
     Call<CoinDetails> fetchCoinDetails(@Path("id") String id);
 }

@@ -37,7 +37,7 @@ public class CryptocurrenciesActivity extends AppCompatActivity {
 
     private void getCryptoCurrencies() {
         CoinApiService coinApiService = new CoinApi().createCoinApiService();
-        Call<List<Coin>> call = coinApiService.fetchCryptocurrencies();
+        Call<List<Coin>> call = coinApiService.fetchCoins();
         call.enqueue(new Callback<List<Coin>>() {
             @Override
             public void onResponse(Call<List<Coin>> call, Response<List<Coin>> response) {

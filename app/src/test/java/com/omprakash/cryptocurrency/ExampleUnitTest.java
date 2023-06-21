@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 
 import com.google.gson.Gson;
 import com.omprakash.cryptocurrency.model.Coin;
+import com.omprakash.cryptocurrency.model.CoinDetails;
 import com.omprakash.cryptocurrency.network.CoinApi;
 import com.omprakash.cryptocurrency.network.CoinApiService;
 
@@ -26,12 +27,21 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void getCryptoCurrencies() throws IOException {
+    public void getCoins() throws IOException {
         CoinApiService coinApiService = new CoinApi().createCoinApiService();
-        Call<List<Coin>> call = coinApiService.fetchCryptocurrencies();
-        List<Coin> cryptoCurrencies = call.execute().body();
-        assertNotNull(cryptoCurrencies);
-        assertFalse(cryptoCurrencies.isEmpty());
-        System.out.println(new Gson().toJson(cryptoCurrencies));
+        Call<List<Coin>> call = coinApiService.fetchCoins();
+        List<Coin> coins = call.execute().body();
+        assertNotNull(coins);
+        assertFalse(coins.isEmpty());
+        System.out.println(new Gson().toJson(coins));
+    }
+
+    @Test
+    public void getCoinDetails() throws IOException {
+        CoinApiService coinApiService = new CoinApi().createCoinApiService();
+        Call<CoinDetails> call = coinApiService.fetchCoinDetails("busd-binance-usd");
+        CoinDetails coinDetails = call.execute().body();
+        assertNotNull(coinDetails);
+        System.out.println(new Gson().toJson(coinDetails));
     }
 }
