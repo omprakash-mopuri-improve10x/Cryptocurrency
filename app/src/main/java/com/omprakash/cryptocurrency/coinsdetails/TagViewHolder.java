@@ -1,4 +1,4 @@
-package com.omprakash.cryptocurrency;
+package com.omprakash.cryptocurrency.coinsdetails;
 
 import android.view.View;
 

@@ -1,4 +1,4 @@
-package com.omprakash.cryptocurrency;
+package com.omprakash.cryptocurrency.coins;
 
 import com.omprakash.cryptocurrency.model.CoinDetails;
 

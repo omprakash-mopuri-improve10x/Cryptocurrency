@@ -1,4 +1,4 @@
-package com.omprakash.cryptocurrency;
+package com.omprakash.cryptocurrency.coinsdetails;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -11,7 +11,7 @@ import com.omprakash.cryptocurrency.model.Team;
 
 import java.util.ArrayList;
 
-public class TeamMembersAdapter extends RecyclerView.Adapter<TeamMemberViwHolder> {
+public class TeamMembersAdapter extends RecyclerView.Adapter<TeamMemberViewHolder> {
 
     private ArrayList<Team> teams;
 
@@ -22,14 +22,14 @@ public class TeamMembersAdapter extends RecyclerView.Adapter<TeamMemberViwHolder
 
     @NonNull
     @Override
-    public TeamMemberViwHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TeamMemberViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         TeamMemberItemBinding binding = TeamMemberItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        TeamMemberViwHolder teamMemberViwHolder = new TeamMemberViwHolder(binding);
-        return teamMemberViwHolder;
+        TeamMemberViewHolder teamMemberViewHolder = new TeamMemberViewHolder(binding);
+        return teamMemberViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TeamMemberViwHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TeamMemberViewHolder holder, int position) {
         Team team = teams.get(position);
         holder.binding.setTeam(team);
     }

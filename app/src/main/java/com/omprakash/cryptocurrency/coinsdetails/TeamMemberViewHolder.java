@@ -1,17 +1,14 @@
-package com.omprakash.cryptocurrency;
+package com.omprakash.cryptocurrency.coinsdetails;
 
-import android.view.View;
-
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.omprakash.cryptocurrency.databinding.TeamMemberItemBinding;
 
-public class TeamMemberViwHolder extends RecyclerView.ViewHolder {
+public class TeamMemberViewHolder extends RecyclerView.ViewHolder {
 
     TeamMemberItemBinding binding;
 
-    public TeamMemberViwHolder(TeamMemberItemBinding binding) {
+    public TeamMemberViewHolder(TeamMemberItemBinding binding) {
         super(binding.getRoot());
         this.binding = binding;
     }

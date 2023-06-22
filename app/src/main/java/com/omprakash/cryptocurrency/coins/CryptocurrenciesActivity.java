@@ -1,4 +1,4 @@
-package com.omprakash.cryptocurrency;
+package com.omprakash.cryptocurrency.coins;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,9 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.omprakash.cryptocurrency.databinding.ActivityCryptocurrenciesBinding;
+import com.omprakash.cryptocurrency.coinsdetails.CoinDetailsActivity;
+import com.omprakash.cryptocurrency.Constants;
 import com.omprakash.cryptocurrency.model.Coin;
-import com.omprakash.cryptocurrency.model.CoinDetails;
 import com.omprakash.cryptocurrency.network.CoinApi;
 import com.omprakash.cryptocurrency.network.CoinApiService;
 
